@@ -35,6 +35,8 @@ RUN set -x \
     && rm tomcat.tar.gz*
 
 ADD ./target/*.war $CATALINA_HOME/webapps/
+# assuming properties are configured in maven properties with classpath:*.properties
+ADD ./config/*.propertie $CATALINA_HOME/lib/
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
